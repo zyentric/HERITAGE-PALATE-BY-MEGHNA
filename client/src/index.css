@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Heritage Palate by Meghna - Global Atelier Stylesheet
+   Webkit Scrollbar Disabling & Smooth Luxury Dynamics
+   ========================================================================== */
+
+/* 1. Global Reset & Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Hide Scrollbars Across All Webkit Browsers (Chrome, Safari, Edge, Opera, Android Webview) */
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+section::-webkit-scrollbar,
+nav::-webkit-scrollbar,
+aside::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
+}
+
+/* 3. Hide Scrollbars for Firefox, IE & Legacy Edge */
+*,
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* 4. Fluid Base Document Setup */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 5. Selection Color in Atelier Gold */
+::selection {
+  background-color: rgba(212, 175, 55, 0.28);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba(212, 175, 55, 0.28);
+  color: inherit;
+}
