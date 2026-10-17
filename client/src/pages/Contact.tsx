@@ -19,6 +19,7 @@ import {
   CheckCircle as CheckIcon,
 } from '@mui/icons-material';
 import { useStore } from '../context/StoreContext';
+import { SEOHead } from '../components/SEOHead';
 
 const Contact: React.FC = () => {
   const { submitInquiry, inquiries } = useStore();
@@ -66,8 +67,33 @@ const Contact: React.FC = () => {
     window.open(url, '_blank');
   };
 
+  const contactSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Heritage Palate by Meghna',
+    description: 'Connect with Meghna and our styling concierge for custom tailoring, bridal inquiries, and orders.',
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      name: 'Heritage Palate by Meghna',
+      telephone: '+91 73034 66990',
+      email: 'patron@heritagepalate.com',
+      url: 'https://heritage-palate-by-meghna.onrender.com/contact',
+      sameAs: [
+        'https://www.instagram.com/heritagepalatebymeghna/',
+        'https://wa.me/917303466990',
+      ],
+    },
+  };
+
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <SEOHead
+        title="Bespoke Concierge & Customer Care | Connect with Meghna"
+        description="Book a styling session or order directly via WhatsApp (+91 73034 66990). Heritage Palate by Meghna offers personalized sizing and couture consultation."
+        keywords="contact Heritage Palate, Meghna stylist, WhatsApp saree order, custom Chikankari order, bridal concierge, Lucknow fashion studio"
+        canonical="https://heritage-palate-by-meghna.onrender.com/contact"
+        schema={contactSchema}
+      />
       <Container maxWidth="xl">
         {/* Editorial Header */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>

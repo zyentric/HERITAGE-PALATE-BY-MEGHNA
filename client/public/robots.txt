@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Allow: /shop
+Allow: /collections
+Allow: /craft
+Allow: /about
+Allow: /contact
+Allow: /product/
+Allow: /assets/
+Disallow: /orders
+
+# Crawl delay for bots
+Crawl-delay: 1
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://heritage-palate-by-meghna.onrender.com/sitemap.xml

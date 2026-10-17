@@ -15,6 +15,7 @@ import {
   DesignServicesOutlined as AtelierIcon,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 
 const values = [
   {
@@ -40,8 +41,31 @@ const values = [
 ];
 
 const About: React.FC = () => {
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Heritage Palate by Meghna',
+    description: 'Learn about Meghna, founder of Heritage Palate, preserving authentic Lucknowi Chikankari and royal Indian textile heritage.',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Heritage Palate by Meghna',
+      founder: {
+        '@type': 'Person',
+        name: 'Meghna',
+        jobTitle: 'Founder & Creative Director',
+      },
+    },
+  };
+
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <SEOHead
+        title="Our Story & Philosophy | Meghna's Atelier"
+        description="Learn the story behind Heritage Palate by Meghna. Celebrating slow fashion, women karigars of Awadh, and bespoke Indian handlooms."
+        keywords="about Heritage Palate, Meghna designer, Lucknowi Chikankari founder, slow fashion India, Indian handloom heritage"
+        canonical="https://heritage-palate-by-meghna.onrender.com/about"
+        schema={aboutSchema}
+      />
       {/* Editorial Header */}
       <Container maxWidth="lg" sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
         <Typography variant="overline" color="secondary.main" sx={{ letterSpacing: '0.22em' }}>

@@ -34,6 +34,7 @@ import {
 import { Link, useSearchParams } from 'react-router-dom';
 import { products } from '../data/products';
 import { useStore } from '../context/StoreContext';
+import { SEOHead } from '../components/SEOHead';
 
 const categoriesList = ['Chikankari', 'Anarkali', 'Sarees', 'Suits'];
 const fabricsList = ['Chanderi', 'Silk', 'Georgette', 'Mulmul', 'Velvet'];
@@ -215,14 +216,35 @@ const Shop: React.FC = () => {
     </Box>
   );
 
+  const shopSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Heritage Palate by Meghna - Handcrafted Collection',
+    description: 'Explore Lucknowi Chikankari suits, Banarasi silk sarees, and royal kalidar Anarkalis.',
+    numberOfItems: products.length,
+    itemListElement: products.map((prod, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: prod.name,
+      url: `https://heritage-palate-by-meghna.onrender.com/product/${prod.id}`,
+    })),
+  };
+
   return (
     <Container maxWidth="xl" sx={{ py: { xs: 4, md: 8 } }}>
+      <SEOHead
+        title="Shop Handcrafted Chikankari Suits, Banarasi Sarees & Anarkalis"
+        description="Explore the complete handcrafted luxury atelier collection by Meghna. Pure silk Banarasi sarees, authentic Lucknowi Chikankari, and bespoke festive outfits."
+        keywords="shop Chikankari suits, buy Banarasi saree online, Indian luxury wear, Chikankari sharara, designer Anarkali, slow fashion India"
+        canonical="https://heritage-palate-by-meghna.onrender.com/shop"
+        schema={shopSchema}
+      />
       {/* Header Banner */}
       <Box sx={{ textAlign: 'center', mb: 6 }}>
         <Typography variant="overline" color="secondary.main">
           Handcrafted Indian Luxury
         </Typography>
-        <Typography variant="h2" sx={{ mt: 1, mb: 1.5 }}>
+        <Typography variant="h2" component="h1" sx={{ mt: 1, mb: 1.5 }}>
           The Atelier Collection
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 640, mx: 'auto', mb: 4 }}>
