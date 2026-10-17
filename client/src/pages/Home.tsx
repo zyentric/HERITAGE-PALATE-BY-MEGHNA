@@ -32,6 +32,7 @@ import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useStore } from '../context/StoreContext';
 import { Hero3DCanvas } from '../components/Hero3DCanvas';
+import { SEOHead } from '../components/SEOHead';
 
 const heroSlides = [
   {
@@ -175,6 +176,11 @@ const Home: React.FC = () => {
 
   return (
     <Box>
+      <SEOHead
+        title="Timeless Handcrafted Indian Luxury Wear"
+        description="Heritage Palate by Meghna celebrates timeless Indian craftsmanship. Discover handcrafted Lucknowi Chikankari, heirloom Banarasi silk sarees, and royal kalidar Anarkalis tailored with bespoke precision."
+        canonical="https://heritage-palate-by-meghna.onrender.com/"
+      />
       {/* Hero Carousel Section */}
       <Box
         sx={{

@@ -19,6 +19,7 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { SEOHead } from '../components/SEOHead';
 
 const trackingSteps = [
   'Atelier Processing',
@@ -38,6 +39,11 @@ const Orders: React.FC = () => {
 
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <SEOHead
+        title="My Orders & Tailoring Status"
+        description="Track the hand embroidery, tailoring progress, and insured courier delivery for your bespoke creations."
+        canonical="https://heritage-palate-by-meghna.onrender.com/orders"
+      />
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>

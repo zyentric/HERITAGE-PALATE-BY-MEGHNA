@@ -14,6 +14,7 @@ import {
   ArrowForward as ArrowForwardIcon,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 
 const stitches = [
   {
@@ -80,6 +81,12 @@ const Craft: React.FC = () => {
 
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <SEOHead
+        title="Artisanal Handloom & Chikankari Craft Heritage"
+        description="Discover the 32 authentic stitches of Lucknowi Chikankari (Bakhiya, Phanda, Jaali) and traditional Varanasi handloom weaving techniques preserved by Heritage Palate by Meghna."
+        keywords="Lucknowi Chikankari stitches, Bakhiya shadow work, handmade Chikankari art, Varanasi handloom, Indian karigar craftsmanship, artisan slow fashion"
+        canonical="https://heritage-palate-by-meghna.onrender.com/craft"
+      />
       {/* Hero Banner */}
       <Container maxWidth="lg" sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
         <Typography variant="overline" color="secondary.main" sx={{ letterSpacing: '0.22em' }}>

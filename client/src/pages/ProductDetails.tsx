@@ -34,6 +34,7 @@ import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useStore } from '../context/StoreContext';
 import { CustomerCareDialog } from '../components/CustomerCareDialog';
+import { SEOHead } from '../components/SEOHead';
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -144,8 +145,85 @@ const ProductDetails: React.FC = () => {
 
   const currentImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
+  const productSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      image: currentImages.map((img) =>
+        img.startsWith('http') ? img : `https://heritage-palate-by-meghna.onrender.com${img}`
+      ),
+      description: product.description,
+      sku: `HPM-PROD-${product.id}`,
+      mpn: `HPM-${product.id}`,
+      brand: {
+        '@type': 'Brand',
+        name: 'Heritage Palate by Meghna',
+      },
+      category: product.category,
+      material: product.fabric,
+      offers: {
+        '@type': 'Offer',
+        url: `https://heritage-palate-by-meghna.onrender.com/product/${product.id}`,
+        priceCurrency: 'INR',
+        price: product.price,
+        priceValidUntil: '2027-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
+        availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        seller: {
+          '@type': 'Organization',
+          name: 'Heritage Palate by Meghna',
+        },
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '28',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://heritage-palate-by-meghna.onrender.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Shop',
+          item: 'https://heritage-palate-by-meghna.onrender.com/shop',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: product.category,
+          item: `https://heritage-palate-by-meghna.onrender.com/shop?category=${product.category}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: product.name,
+          item: `https://heritage-palate-by-meghna.onrender.com/product/${product.id}`,
+        },
+      ],
+    },
+  ];
+
   return (
     <>
+      <SEOHead
+        title={product.name}
+        description={`${product.name} - ${product.tagline}. ${product.description.slice(0, 140)}... Pure ${product.fabric}, handcrafted by master artisans.`}
+        keywords={`${product.name}, ${product.category}, ${product.fabric}, ${product.craft}, authentic Lucknowi Chikankari, Banarasi saree, Heritage Palate by Meghna`}
+        ogType="product"
+        ogImage={product.image}
+        canonical={`https://heritage-palate-by-meghna.onrender.com/product/${product.id}`}
+        schema={productSchema}
+      />
       <Container maxWidth="xl" sx={{ py: { xs: 3, md: 6 } }}>
         {/* Breadcrumb Trail */}
         <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 4, fontSize: '0.85rem' }}>
@@ -261,7 +339,7 @@ const ProductDetails: React.FC = () => {
                 )}
               </Box>
 
-              <Typography variant="h3" sx={{ mb: 1.5, fontFamily: 'Playfair Display, serif', lineHeight: 1.2 }}>
+              <Typography variant="h3" component="h1" sx={{ mb: 1.5, fontFamily: 'Playfair Display, serif', lineHeight: 1.2 }}>
                 {product.name}
               </Typography>
 

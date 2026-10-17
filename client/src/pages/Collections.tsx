@@ -10,6 +10,7 @@ import {
 import { ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
+import { SEOHead } from '../components/SEOHead';
 
 const collectionEdits = [
   {
@@ -49,6 +50,12 @@ const collectionEdits = [
 const Collections: React.FC = () => {
   return (
     <Box sx={{ py: { xs: 6, md: 10 } }}>
+      <SEOHead
+        title="Curated Collections & Seasonal Archives"
+        description="Immerse yourself in our curated edits: The Chikankari Edit, Royal Anarkali Archive, Varanasi & Chanderi Weaves, and Festive Silk Suits."
+        keywords="Chikankari collection, bridal Anarkali, Banarasi saree edit, handloom archives, luxury Indian couture, Heritage Palate by Meghna"
+        canonical="https://heritage-palate-by-meghna.onrender.com/collections"
+      />
       <Container maxWidth="xl">
         {/* Header Banner */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
